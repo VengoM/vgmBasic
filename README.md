@@ -1,3 +1,5 @@
+> springboot+springmvc+jpa+hibernate+shiro整合的基础架子
+
 # 部署说明
 ## 部署前配置修改及数据库初始化
 1. 运行
