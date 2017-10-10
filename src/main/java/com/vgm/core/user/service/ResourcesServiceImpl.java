@@ -14,10 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service("resourcesService")
 public class ResourcesServiceImpl implements ResourcesService {
@@ -113,18 +110,33 @@ public class ResourcesServiceImpl implements ResourcesService {
         return menus;
     }
 
+    /**
+     * 生产TreeVO之后再去除无效资源
+     * 2017-10-10 15:40:09
+     * @param permissions
+     * @return
+     */
     public List<TreeVO> treeMenus(Set<String> permissions) {
-        List<Resources> menus = findAvailableMenus(permissions);
+        List<Resources> menus = findMenus(permissions);
         List<TreeVO> treeVOs = new ArrayList<>();
         for (Resources menu : menus ) {
             TreeVO treeVO = new TreeVO(
                     menu.getId().toString(),
                     menu.getName(),
                     menu,
-                    menu.getParentId().toString());
+                    menu.getParentId().toString(),
+                    menu.getAvailable());
             treeVOs.add(treeVO);
         }
-        return TreeVO.build(treeVOs);
+        List result = TreeVO.build(treeVOs);
+        Iterator it = result.iterator();
+        while (it.hasNext()) {
+            TreeVO treeVO = (TreeVO) it.next();
+            if (!treeVO.getAvailable()) {
+                it.remove();
+            }
+        }
+        return result;
     }
 
     private boolean hasPermission(Set<String> permissions, Resources resources) {

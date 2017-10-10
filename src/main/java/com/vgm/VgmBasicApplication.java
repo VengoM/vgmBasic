@@ -16,10 +16,7 @@ import javax.servlet.DispatcherType;
 @EnableTransactionManagement(proxyTargetClass = true)
 @ImportResource(
 		locations={
-				"classpath:spring/applicationContext-jpa.xml",
-				"classpath:shiro/applicationContext-Shiro.xml",
-				"classpath:shiro/applicationContext-ShiroCache.xml",
-				"classpath:spring-mvc/springmvc-servlet.xml"
+				"classpath:spring/applicationContext.xml"
 		})
 public class VgmBasicApplication extends SpringBootServletInitializer {
 

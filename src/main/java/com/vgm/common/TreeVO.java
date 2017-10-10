@@ -13,6 +13,7 @@ public class TreeVO {
     private List nodes = new ArrayList<>();
     private String parentId;
     private Boolean isRoot = true;
+    private Boolean available;
 
     public TreeVO() {
     }
@@ -22,6 +23,14 @@ public class TreeVO {
         this.text = text;
         this.attributes = attributes;
         this.parentId = parentId;
+    }
+
+    public TreeVO(String id, String text, Object attributes, String parentId, Boolean available) {
+        this.id = id;
+        this.text = text;
+        this.attributes = attributes;
+        this.parentId = parentId;
+        this.available = available;
     }
 
     public String getId() {
@@ -70,6 +79,14 @@ public class TreeVO {
 
     public void setParentId(String parentId) {
         this.parentId = parentId;
+    }
+
+    public Boolean getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Boolean available) {
+        this.available = available;
     }
 
     public static List build(List<TreeVO> list){
