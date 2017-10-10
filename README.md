@@ -1,8 +1,7 @@
 > springboot+springmvc+jpa+hibernate+shiro整合的基础权限控制架子
 
 ## 待修改问题
-1. 权限新增修改后，刷新shiro authorizationInfo
-2. 修复停用父菜单后子菜单还生效问题
+1. 权限新增修改后，刷新shiro权限缓存
 
 ## 部署说明
 ### 部署前配置修改及数据库初始化
