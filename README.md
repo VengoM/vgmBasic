@@ -1,7 +1,11 @@
 > springboot+springmvc+jpa+hibernate+shiro整合的基础权限控制架子
 
-# 部署说明
-## 部署前配置修改及数据库初始化
+## 待修改问题
+1. 权限新增修改后，刷新shiro authorizationInfo
+2. 修复停用父菜单后子菜单还生效问题
+
+## 部署说明
+### 部署前配置修改及数据库初始化
 1. 运行
 *doc/初始化.sql*
 1. 修改application.properties中数据库相关配置
@@ -16,7 +20,7 @@ hibernate不能自动识别数据库类型则需要制定类型
 spring.jpa.database-platform=org.hibernate.dialect.Oracle10gDialect
 ```
 
-## 部署&运行
+### 部署&运行
 > 这里只提供说明tomcat如何运行作为参考
 
 1. run maven install（会生产target目录）
